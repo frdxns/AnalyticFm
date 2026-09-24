@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+:root {
+  --fonteprincipal: Arial;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: var(--fonteprincipal);
+  background-color: bisque;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.sessao {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: auto;
+  width: 50%;
+  gap: 5px;
+}
+
+#artistas {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  background-color: rgb(44, 44, 44);
+  color: white;
+  margin-top: 10px;
+  width: 100%;
+  padding-top: 10px;
+}
+
+#artistas div {
+  text-align: center;
+}

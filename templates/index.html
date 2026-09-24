@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnalyticsFm</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename= 'style.css') }}"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <main>
+        <section class="sessao">
+          <input
+            type="text"
+            id="username"
+            placeholder="Usuario do LastFm"
+            required
+          />
+          <button id="buscar">Buscar</button>
+
+          <div id="artistas"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
