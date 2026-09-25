@@ -11,8 +11,9 @@
   </head>
   <body>
     <div id="container">
-      <main>
-        <section class="sessao">
+      <header>
+        <h2 class="logo">AnalyticsFm</h2>
+        <div id="area_input">
           <input
             type="text"
             id="username"
@@ -20,10 +21,21 @@
             required
           />
           <button id="buscar">Buscar</button>
-
-          <div id="artistas"></div>
+        </div>
+      </header>
+      <main>
+        <section class="sessao">
+          <div id="tocandoagora"></div>
+          <div class="tops">
+            <div id="artistas" class=""></div>
+            <div id="musicas" class=""></div>
+            <div id="albuns" class=""></div>
+          </div>
         </section>
       </main>
+      <footer>
+        <p>feito por diversão :P</p>
+      </footer>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>

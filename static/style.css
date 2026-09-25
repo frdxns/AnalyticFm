@@ -1,7 +1,15 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 :root {
-  --fonteprincipal: Arial;
+  --fontelogo: "Comfortaa", Arial, sans-serif;
+  --fonteprincipal: "Nunito", Arial, sans-serif;
+
+  --corprincipal: rgb(63, 2, 63);
+  --corsecundaria: rgb(164, 127, 164);
+  --cordestaque: rgb(255, 255, 43);
+  --cortexto: rgb(245, 243, 243);
+  --cortexto2: rgb(20, 20, 20);
 }
 
 * {
@@ -14,50 +22,98 @@ body {
   height: 100vh;
   width: 100vw;
   font-family: var(--fonteprincipal);
-  background-color: bisque;
+  background-color: var(--corsecundaria);
+  color: var(--cortexto);
 }
 
 #container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
   width: 100%;
+  height: 100%;
+}
+
+.logo {
+  font-family: var(--fontelogo);
+}
+
+header {
+  background-color: var(--corprincipal);
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header input {
+  border: none;
+  outline: none;
+  font-weight: bold;
+  height: 50px;
+  padding: 5px;
+  width: 200px;
+  font-size: 16px;
+}
+
+header input:focus {
+  outline: 2px solid var(--cordestaque);
+}
+
+header button {
+  background-color: var(--cordestaque);
+  border: none;
+  color: var(--corprincipal);
+  font-weight: bold;
+  height: 50px;
+  padding: 5px;
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sessao {
-  padding-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  height: auto;
-  width: 50%;
-  gap: 5px;
+  width: 80%;
+  font-size: 0.9rem;
+  background-color: var(--corprincipal);
 }
 
-#artistas {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
-  background-color: rgb(44, 44, 44);
-  color: white;
-  margin-top: 10px;
+.tops {
   width: 100%;
-  padding-top: 10px;
+  padding: 0px 10px;
 }
 
-#artistas div {
+#albuns {
+  border: none;
+}
+
+.card {
+  background-color: var(--corprincipal);
+  padding: 10px;
+  border-bottom: 2px solid var(--cordestaque);
+  gap: 15px;
+}
+
+.card div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--cortexto);
+}
+
+.card h2 {
+  font-size: 1.3em;
+}
+
+footer {
   text-align: center;
+  margin-top: auto;
+  background-color: var(--corprincipal);
 }
