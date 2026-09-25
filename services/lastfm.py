@@ -1,4 +1,4 @@
-import requests, os,pprint
+import requests, os
 from dotenv import load_dotenv
 
 load_dotenv()
