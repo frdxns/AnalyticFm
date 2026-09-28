@@ -13,15 +13,45 @@
     <div id="container">
       <header>
         <h2 class="logo">AnalyticsFm</h2>
-        <div id="area_input">
-          <input
-            type="text"
-            id="username"
-            placeholder="Usuario do LastFm"
-            required
-          />
-          <button id="buscar">Buscar</button>
-        </div>
+        <h3 id="mostrar">MENGO</h3>
+        <nav id="navegacao">
+          <form action="">
+            <div id="area_input">
+              <input
+                type="text"
+                id="username"
+                placeholder="Usuario do LastFm"
+                required
+              />
+              <button type="button" id="buscar">Buscar</button>
+              </div>
+              <div id="selecao">
+                <select name="metodos" id="metodos" required>
+                  <option value="" disabled selected>Selecione uma Opção</option>
+                  <option value="Artistas">Artistas</option>
+                  <option value="Musicas">Musicas</option>
+                  <option value="Albuns">Albuns</option>
+                </select>
+                <select name="periodos" id="periodos" required>
+                  <option value="" disabled selected>Selecione uma Opção</option>
+                  <option value="7">7 Dias</option>
+                  <option value="30">30 Dias</option>
+                  <option value="90">90 dias</option>
+                  <option value="180">180 dias</option>
+                  <option value="365">365 dias</option>
+                  <option value="tudo">Tudo</option>
+                </select>
+                <select name="limite" id="limite">
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+        </nav>
+        </form>
       </header>
       <main>
         <section class="sessao">

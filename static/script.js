@@ -1,61 +1,88 @@
 const botao = document.querySelector("#buscar");
+const metodos = document.querySelector("#metodos");
+const periodos = document.querySelector("#periodos");
+const limites = document.querySelector("#limite");
 
-botao.addEventListener("click", async () => {
-  //pegando nome de usuario digitado
-  const username = document.querySelector("#username").value;
+botao.addEventListener("click", buscardados);
+metodos.addEventListener("change", buscardados);
+periodos.addEventListener("change", buscardados);
+limites.addEventListener("change", buscardados);
 
-  //PEGANDO OS DADOS DA API
-  //DADOS DE ARTISTAS
-  const resposta_artistas = await fetch(`api/top-artistas/${username}`);
-  const top_artistas = await resposta_artistas.json();
-  const artistas = top_artistas.topartists.artist;
+async function buscardados() {
+  try {
+    const username = document.querySelector("#username").value;
+    const metodo = document.querySelector("#metodos").value;
+    const periodo = document.querySelector("#periodos").value;
+    const limite = document.querySelector("#limite").value;
+    let metodoselecionado;
+    let periodoselecionado;
 
-  //DADOS DE MUSICAS
-  const resposta_musicas = await fetch(`api/top-musicas/${username}`);
-  const top_musicas = await resposta_musicas.json();
-  const musicas = top_musicas.toptracks.track;
+    if (metodo == "Artistas") {
+      metodoselecionado = "user.gettopartists";
+      console.log(metodoselecionado);
+    } else if (metodo == "Musicas") {
+      metodoselecionado = "user.gettoptracks";
+    } else if (metodo == "Albuns") {
+      metodoselecionado = "user.gettopalbums";
+    }
 
-  //DADOS DE ALBUNS
-  const resposta_albuns = await fetch(`api/top-albuns/${username}`);
-  const top_albuns = await resposta_albuns.json();
-  const albuns = top_albuns.topalbums.album;
+    if (periodo == "7") {
+      periodoselecionado = "7day";
+    } else if (periodo == "30") {
+      periodoselecionado = "1month";
+    } else if (periodo == "90") {
+      periodoselecionado = "3month";
+    } else if (periodo == "180") {
+      periodoselecionado = "6month";
+    } else if (periodo == "365") {
+      periodoselecionado = "12month";
+    } else if (periodo == "tudo") {
+      periodoselecionado == "overall";
+    }
 
-  //PEGANDO A DIV DE CADA CONTEUDO
-  const container_artistas = document.querySelector("#artistas");
-  const container_musicas = document.querySelector("#musicas");
-  const container_albuns = document.querySelector("#albuns");
+    //PEGANDO OS DADOS DA API
+    //DADOS DE ARTISTAS
+    const resposta = await fetch(
+      `api/top-artistas/${username}/${metodoselecionado}/${periodoselecionado}/${limite}`,
+    );
+    const respostajson = await resposta.json();
+    const topbruto = JSON.parse(respostajson);
+    console.log(topbruto);
 
-  container_albuns.classList.add("card");
-  container_musicas.classList.add("card");
-  container_artistas.classList.add("card");
+    //PEGANDO A DIV DE CADA CONTEUDO
+    const container = document.querySelector("#artistas");
 
-  //LIMPANDO O CONTEUDO ANTES DE MOSTRAR NA TELA
-  container_artistas.innerHTML = "";
-  container_musicas.innerHTML = "";
-  container_albuns.innerHTML = "";
+    container.classList.add("card");
 
-  //MOSTRANDO NA TELA CADA CONTEUDO, ARTISTA, MUSICA E ALBUM, RESPECTIVAMENTE
-  artistas.forEach(artista => {
-    const div_artistas = document.createElement("div");
+    //LIMPANDO O CONTEUDO ANTES DE MOSTRAR NA TELA
+    container.innerHTML = "";
 
-    div_artistas.innerHTML = `<h2> ${artista.name}</h2> <p>${artista.playcount} plays</p>`;
+    //MOSTRANDO NA TELA CADA CONTEUDO, ARTISTA, MUSICA E ALBUM, RESPECTIVAMENTE
+    topbruto.forEach(posicao => {
+      const div_top = document.createElement("div");
 
-    container_artistas.appendChild(div_artistas);
-  });
+      if (posicao.artista == undefined) {
+        posicao.artista = "";
+      }
 
-  musicas.forEach(musica => {
-    const div_musicas = document.createElement("div");
+      div_top.innerHTML = `<h2> ${posicao.titulo}</h2> <div id="posicaoartista"><p id="partista">${posicao.artista}</p> <p id="plays">${posicao.plays} plays</p></div>`;
 
-    div_musicas.innerHTML = `<h2>${musica.name}</h2> <p>${musica.playcount} plays</p>`;
+      container.appendChild(div_top);
+    });
+  } catch (erro) {
+    console.error("ocorreu um erro", erro);
+  }
+}
 
-    container_musicas.appendChild(div_musicas);
-  });
+mostrarmenu = document.querySelector("#mostrar");
+nav = document.querySelector("#navegacao");
 
-  albuns.forEach(album => {
-    const div_albuns = document.createElement("div");
+mostrarmenu.addEventListener("click", clicar);
 
-    div_albuns.innerHTML = `<h2>${album.name}</h2> <p>${album.playcount} plays</p>`;
-
-    container_albuns.appendChild(div_albuns);
-  });
-});
+function clicar() {
+  if (navegacao.style.display == "block") {
+    navegacao.style.display = "none";
+  } else {
+    navegacao.style.display = "block";
+  }
+}

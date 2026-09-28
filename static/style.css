@@ -46,14 +46,39 @@ header {
   align-items: center;
 }
 
+header #area_input {
+  display: flex;
+  gap: 10px;
+}
+
+#mostrar {
+  display: none;
+}
+
 header input {
   border: none;
   outline: none;
   font-weight: bold;
   height: 50px;
   padding: 5px;
-  width: 200px;
+  max-width: 400px;
+  min-width: 280px;
   font-size: 16px;
+}
+
+nav select {
+  font-size: 14px;
+  border: none;
+  background-color: var(--cordestaque);
+  color: var(--corprincipal);
+  font-weight: bold;
+}
+
+nav #selecao {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2px;
+  gap: 5px;
 }
 
 header input:focus {
@@ -104,11 +129,38 @@ main {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  gap: 30px;
   align-items: center;
   border-bottom: 1px solid var(--cortexto);
 }
 
-.card h2 {
+.card div h2 {
+  font-size: 1.1rem;
+  width: 60%;
+}
+
+.card #posicaoartista {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border: none;
+}
+
+.card #posicaoartista #partista {
+  width: 50%;
+  text-align: left;
+  font-size: 0.7rem;
+  color: rgb(209, 208, 208);
+}
+
+.card #plays {
+  font-size: 1rem;
+  width: 50%;
+  text-align: right;
+}
+
+#posicaoartista .card h2 {
   font-size: 1.3em;
 }
 
@@ -116,4 +168,18 @@ footer {
   text-align: center;
   margin-top: auto;
   background-color: var(--corprincipal);
+}
+
+@media (max-width: 800px) {
+  header {
+    flex-direction: column;
+  }
+
+  #mostrar {
+    display: block;
+  }
+
+  nav {
+    display: none;
+  }
 }

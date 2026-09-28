@@ -11,19 +11,9 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/api/top-artistas/<usuario>")
-def top_artistas(usuario):
-    dados = pegar_top_artistas(usuario)
-    return jsonify(dados)
-
-@app.route("/api/top-musicas/<usuario>")
-def top_musicas(usuario):
-    dados = pegar_top_musicas(usuario)
-    return jsonify(dados)
-
-@app.route("/api/top-albuns/<usuario>")
-def top_albuns(usuario):
-    dados = pegar_top_albuns(usuario)
+@app.route("/api/top-artistas/<usuario>/<metodo>/<periodo>/<limite>")
+def top_artistas(usuario, metodo, periodo, limite):
+    dados = pegar_top_artistas2(usuario, metodo, periodo, limite)
     return jsonify(dados)
 
 if __name__ == "__main__":
