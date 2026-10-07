@@ -142,6 +142,10 @@ div #posicaoartistas {
   background-color: rgba(255, 255, 255, 0.13);
 }
 
+.card li h2 {
+  font-size: 1.2em;
+}
+
 footer {
   text-align: center;
   margin-top: auto;
