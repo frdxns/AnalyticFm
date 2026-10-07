@@ -109,59 +109,37 @@ main {
   background-color: var(--corprincipal);
 }
 
-.tops {
-  width: 100%;
-  padding: 0px 10px;
+a {
+  color: white;
+  text-decoration: none;
 }
 
-#albuns {
-  border: none;
+a:hover {
+  text-decoration: underline;
 }
 
-.card {
-  background-color: var(--corprincipal);
-  padding: 10px;
-  border-bottom: 2px solid var(--cordestaque);
-  gap: 15px;
+#partista {
+  color: rgb(213, 213, 213);
 }
 
-.card div {
+ol {
+  list-style-position: inside;
+}
+
+div #posicaoartistas {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  gap: 30px;
+}
+
+.card li {
+  display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--cortexto);
-}
-
-.card div h2 {
-  font-size: 1.1rem;
-  width: 60%;
-}
-
-.card #posicaoartista {
-  width: 40%;
-  display: flex;
   justify-content: space-between;
-  gap: 10px;
-  border: none;
+  border-bottom: 1px solid white;
+  padding: 5px 10px;
 }
 
-.card #posicaoartista #partista {
-  width: 50%;
-  text-align: left;
-  font-size: 0.7rem;
-  color: rgb(209, 208, 208);
-}
-
-.card #plays {
-  font-size: 1rem;
-  width: 50%;
-  text-align: right;
-}
-
-#posicaoartista .card h2 {
-  font-size: 1.3em;
+.card li:hover {
+  background-color: rgba(255, 255, 255, 0.13);
 }
 
 footer {

@@ -50,7 +50,7 @@ async function buscardados() {
     console.log(topbruto);
 
     //PEGANDO A DIV DE CADA CONTEUDO
-    const container = document.querySelector("#artistas");
+    const container = document.querySelector("#tops");
 
     container.classList.add("card");
 
@@ -65,7 +65,7 @@ async function buscardados() {
         posicao.artista = "";
       }
 
-      div_top.innerHTML = `<h2> ${posicao.titulo}</h2> <div id="posicaoartista"><p id="partista">${posicao.artista}</p> <p id="plays">${posicao.plays} plays</p></div>`;
+      div_top.innerHTML = `<li><div id="posicaoartista"><h2><a href="${posicao.url}" target="_blank">${posicao.titulo}</a></h2> <a href="${posicao.url}" target = "_blank" rel="noopener noreferrer" id="partista">${posicao.artista}</a></div> <p id="plays">${posicao.plays} plays</p></li>`;
 
       container.appendChild(div_top);
     });

@@ -24,7 +24,8 @@ def pegar_top_artistas2(usuario, metodo, periodo, limite):
         artistas = dados["topartists"]["artist"]
         dadosformatados = [{
             "titulo": artista["name"],
-            "plays": artista["playcount"]
+            "plays": artista["playcount"],
+            "url": artista["url"]
         }for artista in artistas]
 
     elif metodo == "user.gettoptracks":
@@ -32,7 +33,8 @@ def pegar_top_artistas2(usuario, metodo, periodo, limite):
             dadosformatados = [{
                 "titulo": musica["name"],
                 "artista": musica["artist"]["name"],
-                "plays": musica["playcount"]
+                "plays": musica["playcount"],
+                "url": musica["url"]
             }for musica in musicas]
 
     elif metodo == "user.gettopalbums":
@@ -40,7 +42,8 @@ def pegar_top_artistas2(usuario, metodo, periodo, limite):
             dadosformatados = [{
                 "titulo": album["name"],
                 "artista": album["artist"]["name"],
-                "plays": album["playcount"]
+                "plays": album["playcount"],
+                "url": album["url"]
             }for album in albuns]
 
     dadosfinal = json.dumps(dadosformatados)
