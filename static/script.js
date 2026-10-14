@@ -65,7 +65,7 @@ async function buscardados() {
         posicao.artista = "";
       }
 
-      div_top.innerHTML = `<li><div id="posicaoartista"><h2><a href="${posicao.url}" target="_blank">${posicao.titulo}</a></h2> <a href="${posicao.url}" target = "_blank" rel="noopener noreferrer" id="partista">${posicao.artista}</a></div> <p id="plays">${posicao.plays} plays</p></li>`;
+      div_top.innerHTML = `<li><div id="posicao-rank"><h2><a href="${posicao.url}" target="_blank">${posicao.titulo}</a></h2> <a href="${posicao.url}" target = "_blank" rel="noopener noreferrer" class="nome-artista">${posicao.artista}</a></div> <p class="plays">${posicao.plays} plays</p></li>`;
 
       container.appendChild(div_top);
     });
@@ -74,15 +74,15 @@ async function buscardados() {
   }
 }
 
-mostrarmenu = document.querySelector("#mostrar");
-nav = document.querySelector("#navegacao");
-
+const mostrarmenu = document.querySelector("#mostrar");
+const nav = document.querySelector("#navegacao");
+const icone = document.querySelector("header i");
+const main = document.querySelector("main");
 mostrarmenu.addEventListener("click", clicar);
 
 function clicar() {
-  if (navegacao.style.display == "block") {
-    navegacao.style.display = "none";
-  } else {
-    navegacao.style.display = "block";
-  }
+  nav.classList.toggle("mostrando");
+  icone.classList.toggle("fa-bars");
+  icone.classList.toggle("fa-xmark");
+  main.classList.toggle("shifted");
 }

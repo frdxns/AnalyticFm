@@ -69,6 +69,8 @@ header input {
 nav select {
   font-size: 14px;
   border: none;
+  border-radius: 10px;
+  padding: 5px;
   background-color: var(--cordestaque);
   color: var(--corprincipal);
   font-weight: bold;
@@ -118,7 +120,7 @@ a:hover {
   text-decoration: underline;
 }
 
-#partista {
+.nome-artista {
   color: rgb(213, 213, 213);
 }
 
@@ -126,8 +128,9 @@ ol {
   list-style-position: inside;
 }
 
-div #posicaoartistas {
+#posicao-rank {
   display: flex;
+  flex-direction: column;
 }
 
 .card li {
@@ -153,15 +156,49 @@ footer {
 }
 
 @media (max-width: 800px) {
-  header {
-    flex-direction: column;
+  header h2 {
+    font-size: 1.1rem;
   }
 
   #mostrar {
     display: block;
+    font-size: 22px;
   }
 
   nav {
-    display: none;
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    transition: 0.3s;
+  }
+
+  nav.mostrando {
+    display: flex;
+    position: absolute;
+    height: 120px;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--corprincipal);
+    padding: 5px;
+  }
+
+  main {
+    padding: 20px;
+    transition: margin-top 0.3s;
+  }
+
+  main.shifted {
+    margin-top: 90px;
   }
 }
