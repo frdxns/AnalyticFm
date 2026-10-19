@@ -61,9 +61,21 @@ header input {
   font-weight: bold;
   height: 50px;
   padding: 5px;
+  border-radius: 8px;
   max-width: 400px;
-  min-width: 280px;
   font-size: 16px;
+}
+
+.alerta {
+  display: none;
+}
+
+.alerta-mostrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: rgb(228, 123, 123);
 }
 
 nav select {
@@ -93,6 +105,7 @@ header button {
   color: var(--corprincipal);
   font-weight: bold;
   height: 50px;
+  border-radius: 15px;
   padding: 5px;
 }
 
@@ -173,7 +186,6 @@ footer {
     top: 0;
     left: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
     overflow-y: hidden;
     transition: 0.3s;
@@ -186,11 +198,27 @@ footer {
     top: 5%;
     left: 0;
     width: 100%;
-    justify-content: center;
     align-items: center;
 
     background-color: var(--corprincipal);
     padding: 5px;
+  }
+
+  header input {
+    width: 70%;
+  }
+
+  #selecao {
+    width: 80%;
+    justify-content: space-between;
+  }
+
+  #metodos {
+    max-width: 100px;
+  }
+
+  #periodos {
+    max-width: 100px;
   }
 
   main {

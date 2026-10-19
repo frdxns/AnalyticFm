@@ -47,7 +47,6 @@ async function buscardados() {
     );
     const respostajson = await resposta.json();
     const topbruto = JSON.parse(respostajson);
-    console.log(topbruto);
 
     //PEGANDO A DIV DE CADA CONTEUDO
     const container = document.querySelector("#tops");
@@ -58,22 +57,29 @@ async function buscardados() {
     container.innerHTML = "";
 
     //MOSTRANDO NA TELA CADA CONTEUDO, ARTISTA, MUSICA E ALBUM, RESPECTIVAMENTE
-    topbruto.forEach(posicao => {
-      const div_top = document.createElement("div");
+    const alerta = document.querySelector(".alerta");
+    if (topbruto != 404) {
+      alerta.classList.remove("alerta-mostrar");
+      topbruto.forEach(posicao => {
+        const div_top = document.createElement("div");
 
-      if (posicao.artista == undefined) {
-        posicao.artista = "";
-      }
+        if (posicao.artista == undefined) {
+          posicao.artista = "";
+        }
 
-      div_top.innerHTML = `<li><div id="posicao-rank"><h2><a href="${posicao.url}" target="_blank">${posicao.titulo}</a></h2> <a href="${posicao.url}" target = "_blank" rel="noopener noreferrer" class="nome-artista">${posicao.artista}</a></div> <p class="plays">${posicao.plays} plays</p></li>`;
+        div_top.innerHTML = `<li><div id="posicao-rank"><h2><a href="${posicao.url}" target="_blank">${posicao.titulo}</a></h2> <a href="${posicao.url}" target = "_blank" rel="noopener noreferrer" class="nome-artista">${posicao.artista}</a></div> <p class="plays">${posicao.plays} plays</p></li>`;
 
-      container.appendChild(div_top);
-    });
+        container.appendChild(div_top);
+      });
+    } else {
+      alerta.classList.add("alerta-mostrar");
+    }
   } catch (erro) {
     console.error("ocorreu um erro", erro);
   }
 }
 
+//MENU DE PESQUISA
 const mostrarmenu = document.querySelector("#mostrar");
 const nav = document.querySelector("#navegacao");
 const icone = document.querySelector("header i");

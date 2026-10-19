@@ -17,18 +17,20 @@ def pegar_top_artistas2(usuario, metodo, periodo, limite):
     }
 
     response = requests.get(URL, params= params)
+
+    if response.status_code == 200:
     
-    dados = response.json()
+        dados = response.json()
 
-    if metodo == "user.gettopartists":
-        artistas = dados["topartists"]["artist"]
-        dadosformatados = [{
-            "titulo": artista["name"],
-            "plays": artista["playcount"],
-            "url": artista["url"]
-        }for artista in artistas]
+        if metodo == "user.gettopartists":
+            artistas = dados["topartists"]["artist"]
+            dadosformatados = [{
+                "titulo": artista["name"],
+                "plays": artista["playcount"],
+                "url": artista["url"]
+            }for artista in artistas]
 
-    elif metodo == "user.gettoptracks":
+        elif metodo == "user.gettoptracks":
             musicas = dados["toptracks"]["track"]
             dadosformatados = [{
                 "titulo": musica["name"],
@@ -37,7 +39,7 @@ def pegar_top_artistas2(usuario, metodo, periodo, limite):
                 "url": musica["url"]
             }for musica in musicas]
 
-    elif metodo == "user.gettopalbums":
+        elif metodo == "user.gettopalbums":
             albuns = dados["topalbums"]["album"]
             dadosformatados = [{
                 "titulo": album["name"],
@@ -46,8 +48,9 @@ def pegar_top_artistas2(usuario, metodo, periodo, limite):
                 "url": album["url"]
             }for album in albuns]
 
-    dadosfinal = json.dumps(dadosformatados)
-    return dadosfinal   
-
-
-
+        dadosfinal = json.dumps(dadosformatados)
+        return dadosfinal   
+    elif response.status_code == 404:
+        return 404
+    else:
+        return "ERRO"
